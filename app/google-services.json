@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "796463320061",
+    "project_id": "lostdogsandcats-60c4d",
+    "storage_bucket": "lostdogsandcats-60c4d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:796463320061:android:3a87c5228c2a1f70c9e794",
+        "android_client_info": {
+          "package_name": "com.example.lostdogsandcats"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "796463320061-4m45j9j5o3813elmfvdd1ua0adaerire.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWBJtyPoff32qx8geBj66D3un3E5mtN0Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "796463320061-4m45j9j5o3813elmfvdd1ua0adaerire.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
