@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PetActivity">
+    tools:context=".EditPetActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,8 +18,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Name: " />
-            <TextView
-                android:id="@+id/nameView"
+            <EditText
+                android:id="@+id/nameEditView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -28,8 +28,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <TextView
-                android:id="@+id/photoView"
+            <EditText
+                android:id="@+id/photoEditView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -42,8 +42,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Place: " />
-            <TextView
-                android:id="@+id/placeView"
+            <EditText
+                android:id="@+id/placeEditView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -55,9 +55,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="If see, please call " />
-            <TextView
-                android:id="@+id/phoneView"
+                android:text="Phone number: " />
+            <EditText
+                android:id="@+id/phoneEditView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -67,30 +67,25 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
-                android:id="@+id/descriptionView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description: " />
+            <EditText
+                android:id="@+id/descriptionEditView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent" />
         </LinearLayout>
         <Button
+            android:id="@+id/saveEditButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/addComment"
-            android:text="Add comment"/>
+            android:text="Save"/>
         <Button
-            android:id="@+id/editButton"
+            android:id="@+id/deleteEditButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Edit"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/commentrecyclerview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:listitem="@layout/comment_item"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"/>
-
+            android:text="Delete"/>
     </LinearLayout>
 
-</LinearLayout>
+</com.google.android.material.card.MaterialCardView>

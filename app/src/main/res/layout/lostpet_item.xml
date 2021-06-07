@@ -12,6 +12,31 @@
         android:text="NAV"
         android:textColor="@color/black"
         android:textSize="34sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/displayname"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/displayplace"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/displayphoto"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/displaynumber"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/displaydescription"/>
+    <Button
+        android:id="@+id/see"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="See more"/>
 
 <!--    <TextView-->
 <!--        android:layout_width="wrap_content"-->

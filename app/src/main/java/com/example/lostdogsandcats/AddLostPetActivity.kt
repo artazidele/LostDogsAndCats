@@ -1,9 +1,7 @@
 package com.example.lostdogsandcats
 
-import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioGroup
@@ -15,10 +13,25 @@ import java.util.*
 class AddLostPetActivity : AppCompatActivity() {
 
     val db = FirebaseFirestore.getInstance()
+    //private var userid: String = "1"
 
+    override fun onBackPressed() {
+        val userid = intent.getStringExtra("user_id").toString()
+        val intent = Intent(this@AddLostPetActivity, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        intent.putExtra(
+            "user_id",
+            userid
+        )
+        startActivity(intent)
+        finish()
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_lost_pet)
+//        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
+
+        val userid = intent.getStringExtra("user_id").toString()
 
         /*val saveButton = findViewById<Button>(R.id.button_save)
         val updateButton = findViewById<Button>(R.id.button_update)
@@ -48,22 +61,33 @@ class AddLostPetActivity : AppCompatActivity() {
             val name = findViewById<EditText>(R.id.name).text.toString()
             val description = findViewById<EditText>(R.id.description).text.toString()
             val photo = "There will be a photo"
-            val dateNow = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
+            val dateNow = SimpleDateFormat("dd.M.yyyy hh:mm:ss")
             val date = dateNow.format(Date()).toString()
             val place = findViewById<EditText>(R.id.place).text.toString()
             val number = findViewById<EditText>(R.id.number).text.toString()
-            val userId = "0"
-            var isDog = false
+            val userId = userid
+            var isDog = "false"
             val id = findViewById<RadioGroup>(R.id.dog_or_cat).checkedRadioButtonId
             when (id) {
-                R.id.cat -> isDog = false
-                else -> isDog = true
+                R.id.cat -> isDog = "false"
+                else -> isDog = "true"
             }
-            val petToAdd = Pet(name, isDog, description, photo, date, place, number, userId)
-            addPet(petToAdd)
-            startActivity(Intent(this@AddLostPetActivity, MainActivity::class.java))
+            val petId = userId+date
+            val petToAdd = LostPet(petId, name, isDog, description, photo, date, place, number, userId)
+            addPet(petToAdd, petId)
+            val intent = Intent(this@AddLostPetActivity, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            intent.putExtra(
+                "user_id",
+                userid
+            )
+            startActivity(intent)
+            finish()
         }
-
+//        val deleteButton = findViewById<Button>(R.id.button_delete)
+//        deleteButton.setOnClickListener {
+//            deletePet("4r5wHGjMdadRRtXQkWKjk8cD0DQ205.6.2021 09:27:03")
+//        }
 
     }
     /*private fun addPet(pet: Pet){
@@ -107,15 +131,23 @@ class AddLostPetActivity : AppCompatActivity() {
     }*/
 
     //LostDogsAndCats
-    private fun addPet(pet: Pet){
-        db.collection("lostpets")
-            .add(pet)
-            .addOnSuccessListener { documentReference ->
-                Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
-            }
-            .addOnFailureListener { e ->
-                Log.w(ContentValues.TAG, "Error adding document", e)
-            }
+//    private fun addPet(pet: LostPet, petID: String){
+//        db.collection("allpets")
+//            .add(pet)
+////            .addOnSuccessListener { documentReference ->
+////                Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+////            }
+////            .addOnFailureListener { e ->
+////                Log.w(ContentValues.TAG, "Error adding document", e)
+////            }
+//
+//    }
+    private fun addPet(pet: LostPet, petID: String){
+        db.collection("allpets").document(petID).set(pet)
+    }
+    private fun deletePet(pet: String) {
+        db.collection("allpets").document("${pet}")
+            .delete()
     }
 
 }
