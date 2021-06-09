@@ -5,18 +5,23 @@
     android:orientation="vertical">
     <EditText
         android:id="@+id/commenttext"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"/>
+        android:layout_width="match_parent"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"/>
     <Button
         android:text="Add"
         android:id="@+id/savecomment"
+        android:layout_gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"/>
     <Button
         android:text="Cancel"
         android:id="@+id/cancelcomment"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/red"
+        android:layout_gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"/>
 
 
 </LinearLayout>

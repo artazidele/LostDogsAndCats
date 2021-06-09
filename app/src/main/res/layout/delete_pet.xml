@@ -3,20 +3,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-<!--    <EditText-->
-<!--        android:id="@+id/commenttext"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="match_parent"/>-->
     <Button
-        android:text="Delete"
+        android:text="DELETE"
         android:id="@+id/deletepet"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"/>
+        android:backgroundTint="@color/red"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"/>
     <Button
         android:text="Cancel"
+        android:layout_gravity="center"
         android:id="@+id/cancelpet"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"/>
 
 
 </LinearLayout>

@@ -17,21 +17,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
                 android:text="Name: " />
             <EditText
                 android:id="@+id/nameEditView"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <EditText
-                android:id="@+id/photoEditView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:textColor="@color/black"
                 app:layout_constraintTop_toTopOf="parent" />
         </LinearLayout>
         <LinearLayout
@@ -41,11 +33,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
                 android:text="Place: " />
             <EditText
                 android:id="@+id/placeEditView"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
                 app:layout_constraintTop_toTopOf="parent" />
         </LinearLayout>
         <LinearLayout
@@ -55,11 +49,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
                 android:text="Phone number: " />
             <EditText
                 android:id="@+id/phoneEditView"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
                 app:layout_constraintTop_toTopOf="parent" />
         </LinearLayout>
         <LinearLayout
@@ -69,23 +65,29 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
                 android:text="Description: " />
             <EditText
                 android:id="@+id/descriptionEditView"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
                 app:layout_constraintTop_toTopOf="parent" />
         </LinearLayout>
         <Button
             android:id="@+id/saveEditButton"
+            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Save"/>
         <Button
+            android:layout_gravity="center"
+            android:backgroundTint="@color/red"
+            android:textColor="@color/white"
             android:id="@+id/deleteEditButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Delete"/>
+            android:text="DELETE"/>
     </LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>

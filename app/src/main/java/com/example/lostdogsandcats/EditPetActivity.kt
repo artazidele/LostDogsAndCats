@@ -38,21 +38,8 @@ class EditPetActivity : AppCompatActivity() {
         findViewById<EditText>(R.id.nameEditView).setText(intent.getStringExtra("petName"))
         findViewById<EditText>(R.id.phoneEditView).setText(intent.getStringExtra("number"))
         findViewById<EditText>(R.id.placeEditView).setText(intent.getStringExtra("place"))
-        findViewById<EditText>(R.id.photoEditView).setText(intent.getStringExtra("photo"))
         findViewById<EditText>(R.id.descriptionEditView).setText(intent.getStringExtra("description"))
 
-//        findViewById<Button>(R.id.deleteEditButton).setOnClickListener {
-//            db.collection("allpets").document("${intent.getStringExtra("petId").toString()}")
-//                .delete()
-//
-//
-//            val intent2 = Intent(this@EditPetActivity, MainActivity::class.java)
-//            intent2.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-//
-//            intent2.putExtra("user", intent.getStringExtra("user").toString())
-//            startActivity(intent2)
-//            finish()
-//        }
 
         findViewById<Button>(R.id.deleteEditButton).setOnClickListener {
             val dialogView = LayoutInflater.from(this).inflate(R.layout.delete_pet, null)
@@ -62,17 +49,6 @@ class EditPetActivity : AppCompatActivity() {
             val alertDialog = builder.show()
             dialogView.findViewById<Button>(R.id.deletepet).setOnClickListener {
                 alertDialog.dismiss()
-////                val commentText =
-////                    dialogView.findViewById<EditText>(R.id.commenttext).text.toString()
-////                //SAVE TO DB
-//                val dateNow = SimpleDateFormat("dd.M.yyyy hh:mm:ss")
-//                val date = dateNow.format(Date()).toString()
-////                val commentToAdd = Comment(
-////                    intent.getStringExtra("petId").toString(),
-////                    intent.getStringExtra("user").toString(),
-//////                    commentText,
-////                    date
-////                )
                 db.collection("allpets").document("${intent.getStringExtra("petId").toString()}")
                     .delete()
 
@@ -90,25 +66,15 @@ class EditPetActivity : AppCompatActivity() {
                 val intent2 = Intent(this@EditPetActivity, MainActivity::class.java)
                 intent2.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
 
-                intent2.putExtra("user", intent.getStringExtra("user").toString())
+                intent2.putExtra("user_id", intent.getStringExtra("user").toString())
                 startActivity(intent2)
                 finish()
             }
             dialogView.findViewById<Button>(R.id.cancelpet).setOnClickListener {
                 alertDialog.dismiss()
-//                val intent2 = Intent(this@EditPetActivity, MainActivity::class.java)
-//                intent2.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-//
-//                intent2.putExtra("user", intent.getStringExtra("user").toString())
-//                startActivity(intent2)
-//                finish()
             }
 
         }
-
-
-
-
 
         findViewById<Button>(R.id.saveEditButton).setOnClickListener {
             db.collection("allpets").document("${intent.getStringExtra("petId").toString()}")
@@ -116,17 +82,15 @@ class EditPetActivity : AppCompatActivity() {
                     mapOf(
                         "name" to findViewById<EditText>(R.id.nameEditView).text.toString(),
                         "number" to findViewById<EditText>(R.id.phoneEditView).text.toString(),
-                        "photo" to findViewById<EditText>(R.id.photoEditView).text.toString(),
+                        //"photo" to findViewById<EditText>(R.id.photoEditView).text.toString(),
                         "description" to findViewById<EditText>(R.id.descriptionEditView).text.toString(),
                         "place" to findViewById<EditText>(R.id.placeEditView).text.toString()
                     )
                 )
-
-
             val intent2 = Intent(this@EditPetActivity, MainActivity::class.java)
             intent2.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
 
-            intent2.putExtra("user", intent.getStringExtra("user").toString())
+            intent2.putExtra("user_id", intent.getStringExtra("user").toString())
             startActivity(intent2)
             finish()
         }

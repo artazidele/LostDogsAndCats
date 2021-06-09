@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="96dp">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Email:"/>
+            android:textColor="@color/black"
+            android:text="Email:" />
+
         <EditText
             android:id="@+id/email_log_in"
+            android:textColor="@color/black"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
@@ -21,33 +27,60 @@
             android:textSize="18sp" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Password:"/>
+            android:textColor="@color/black"
+            android:text="Password:" />
+
         <EditText
             android:id="@+id/password_log_in"
+            android:textColor="@color/black"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
             android:inputType="textAutoComplete"
+            android:password="true"
             android:textSize="18sp" />
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/button_save"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="LOG IN" />
-    <Button
-        android:id="@+id/to_register"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Register" />
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/button_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LOG IN"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/button"/>
+
+        <TextView
+            android:textAlignment="center"
+            android:layout_marginTop="48dp"
+            android:layout_width="match_parent"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"
+            android:text="Do not have account?" />
+
+        <Button
+            android:id="@+id/to_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Register"
+            android:textColor="@color/button"
+            android:backgroundTint="@color/white"/>
+    </LinearLayout>
 
 </LinearLayout>

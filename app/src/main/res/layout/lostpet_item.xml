@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="16dp"
+    android:layout_margin="16dp"
     android:orientation="vertical">
 
     <TextView
@@ -11,132 +11,44 @@
         android:layout_height="wrap_content"
         android:text="NAV"
         android:textColor="@color/black"
-        android:textSize="34sp" />
+        android:textSize="20sp" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/displayname"/>
+        android:id="@+id/displayname"
+        android:textColor="@color/black"
+        android:textSize="18sp"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/enterImage"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/displayplace"/>
+        android:id="@+id/displayplace"
+        android:textColor="@color/black"
+        android:textSize="14sp"/>
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/displayphoto"/>-->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/displayphoto"/>
+        android:id="@+id/displaynumber"
+        android:textColor="@color/red"
+        android:textSize="14sp"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/displaynumber"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/displaydescription"/>
+        android:id="@+id/displaydescription"
+        android:textColor="@color/black"
+        android:textSize="14sp"/>
     <Button
+        android:layout_gravity="center"
         android:id="@+id/see"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="See more"/>
-
-<!--    <TextView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="there will be photo"-->
-<!--        android:textColor="@color/black" />-->
-
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal">-->
-
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Name: "-->
-<!--            android:textColor="@color/black" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/lostPet"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:textColor="@color/black" />-->
-<!--    </LinearLayout>-->
-
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal">-->
-
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Description: "-->
-<!--            android:textColor="@color/black" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/description"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:textColor="@color/black" />-->
-<!--    </LinearLayout>-->
-
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal">-->
-
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Place: "-->
-<!--            android:textColor="@color/black" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/place"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:textColor="@color/black" />-->
-<!--    </LinearLayout>-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/time"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:textColor="@color/black" />-->
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal">-->
-
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Number: "-->
-<!--            android:textColor="@color/black" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/number"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:textColor="@color/black" />-->
-<!--    </LinearLayout>-->
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal">-->
-
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Email: "-->
-<!--            android:textColor="@color/black" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/email"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:textColor="@color/black" />-->
-<!--    </LinearLayout>-->
-
 
 </LinearLayout>

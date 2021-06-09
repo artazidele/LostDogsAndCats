@@ -1,19 +1,30 @@
 package com.example.lostdogsandcats
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
+import android.net.Uri
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.RadioGroup
+import android.provider.MediaStore
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
+import java.io.ByteArrayOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
 
+
 class AddLostPetActivity : AppCompatActivity() {
 
+    val storage = Firebase.storage
     val db = FirebaseFirestore.getInstance()
-    //private var userid: String = "1"
+
+    lateinit var imageView: ImageView
+    lateinit var button: Button
+    private val pickImage = 100
+    private var imageUri: Uri? = null
 
     override fun onBackPressed() {
         val userid = intent.getStringExtra("user_id").toString()
@@ -26,42 +37,24 @@ class AddLostPetActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_lost_pet)
-//        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
-
         val userid = intent.getStringExtra("user_id").toString()
 
-        /*val saveButton = findViewById<Button>(R.id.button_save)
-        val updateButton = findViewById<Button>(R.id.button_update)
-
-        val petToAdd = Pet("Samba", true, false, "","", "", "", "")
-        saveButton.setOnClickListener {
-            addPet(petToAdd)
+        imageView = findViewById<ImageView>(R.id.imageView)
+        button = findViewById<Button>(R.id.buttonLoadPicture)
+        button.setOnClickListener {
+            val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+            startActivityForResult(gallery, pickImage)
         }
-        val readButton = findViewById<Button>(R.id.button_read)
-        readButton.setOnClickListener {
-            readPetData()
-        }
-        //val name = findViewById<EditText>(R.id.name).text.toString()
-        updateButton.setOnClickListener {
-            val name = findViewById<EditText>(R.id.name).text.toString()
-            updatePet(name)
-        }
-        val deleteButton = findViewById<Button>(R.id.button_delete)
 
-        deleteButton.setOnClickListener {
-            deletePet()
-        }*/
-
-        //LostDogsAndCats
         val saveButton = findViewById<Button>(R.id.button_save)
         saveButton.setOnClickListener {
             val name = findViewById<EditText>(R.id.name).text.toString()
             val description = findViewById<EditText>(R.id.description).text.toString()
-            val photo = "There will be a photo"
-            val dateNow = SimpleDateFormat("dd.M.yyyy hh:mm:ss")
+            val dateNow = SimpleDateFormat("dd.M.yyyy HH:mm:ss")
             val date = dateNow.format(Date()).toString()
             val place = findViewById<EditText>(R.id.place).text.toString()
             val number = findViewById<EditText>(R.id.number).text.toString()
@@ -72,9 +65,51 @@ class AddLostPetActivity : AppCompatActivity() {
                 R.id.cat -> isDog = "false"
                 else -> isDog = "true"
             }
-            val petId = userId+date
-            val petToAdd = LostPet(petId, name, isDog, description, photo, date, place, number, userId)
+            val photo = userId + date + ".jpg"
+            val petId = userId + date
+            val petToAdd =
+                LostPet(petId, name, isDog, description, photo, date, place, number, userId)
             addPet(petToAdd, petId)
+            //For uploading image
+            val storageRef = storage.reference
+
+            val mountainsRef = storageRef.child(photo)
+
+            val mountainImagesRef = storageRef.child("images/" + photo)
+
+            mountainsRef.name == mountainImagesRef.name // true
+            mountainsRef.path == mountainImagesRef.path // false
+
+            val imageView = findViewById<ImageView>(R.id.imageView)
+            val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+            startActivityForResult(gallery, pickImage)
+
+
+            //imageView.setImageResource(R.drawable.image2)
+            imageView.isDrawingCacheEnabled = true
+            imageView.buildDrawingCache()
+
+
+            val bitmap = (imageView.drawable as BitmapDrawable).bitmap
+            val baos = ByteArrayOutputStream()
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+            val data = baos.toByteArray()
+
+            var uploadTask = mountainsRef.putBytes(data)
+            uploadTask.addOnFailureListener {
+                // Handle unsuccessful uploads
+            }.addOnSuccessListener { taskSnapshot ->
+                // taskSnapshot.metadata contains file metadata such as size, content-type, etc.
+                // ...
+//                val intent = Intent(this@AddLostPetActivity, MainActivity::class.java)
+//                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+//                intent.putExtra(
+//                    "user_id",
+//                    userid
+//                )
+//                startActivity(intent)
+//                finish()
+            }
             val intent = Intent(this@AddLostPetActivity, MainActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             intent.putExtra(
@@ -84,70 +119,26 @@ class AddLostPetActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-//        val deleteButton = findViewById<Button>(R.id.button_delete)
-//        deleteButton.setOnClickListener {
-//            deletePet("4r5wHGjMdadRRtXQkWKjk8cD0DQ205.6.2021 09:27:03")
-//        }
 
     }
-    /*private fun addPet(pet: Pet){
-//        db.collection("pets")
-//            .add(pet)
-//            .addOnSuccessListener { documentReference ->
-//                Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
-//            }
-//            .addOnFailureListener { e ->
-//                Log.w(ContentValues.TAG, "Error adding document", e)
-//            }
 
-        db.collection("addedPets").document("AddedPet2").set(pet)
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == RESULT_OK && requestCode == pickImage) {
+            imageUri = data?.data
+            imageView.setImageURI(imageUri)
+        }
     }
-    private fun updatePet(name: String){
-        val petToUpdate = db.collection("addedPets").document("AddedPet")
 
-        val vards = name
-        petToUpdate
-            .update("name", vards)
-    }
-    private fun deletePet() {
-        db.collection("pets").document("DfLYgR570BJucWWLh6qd")
-            .delete()
-    }
-    private fun readPetData(){
-        val docRef = db.collection("addedPets").document("AddedPet")
-        docRef.get()
-            .addOnSuccessListener { document ->
-                if (document != null) {
-                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                    findViewById<Button>(R.id.button_delete).text = document.id.toString()
-
-                } else {
-                    Log.d(TAG, "No such document")
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.d(TAG, "get failed with ", exception)
-            }
-    }*/
-
-    //LostDogsAndCats
-//    private fun addPet(pet: LostPet, petID: String){
-//        db.collection("allpets")
-//            .add(pet)
-////            .addOnSuccessListener { documentReference ->
-////                Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
-////            }
-////            .addOnFailureListener { e ->
-////                Log.w(ContentValues.TAG, "Error adding document", e)
-////            }
-//
-//    }
-    private fun addPet(pet: LostPet, petID: String){
+    private fun addPet(pet: LostPet, petID: String) {
         db.collection("allpets").document(petID).set(pet)
     }
+
     private fun deletePet(pet: String) {
         db.collection("allpets").document("${pet}")
             .delete()
     }
 
 }
+
+

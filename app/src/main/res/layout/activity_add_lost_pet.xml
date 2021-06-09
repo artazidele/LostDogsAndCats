@@ -1,126 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/buttonLoadPicture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="0"
+        android:text="Load Picture" />
+
     <RadioGroup
         android:id="@+id/dog_or_cat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Pet is: "/>
-        <RadioButton android:id="@+id/dog"
+            android:text="Pet is: "
+            android:textColor="@color/black" />
+
+        <RadioButton
+            android:id="@+id/dog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dog"/>
-        <RadioButton android:id="@+id/cat"
+            android:text="Dog"
+            android:textColor="@color/black" />
+
+        <RadioButton
+            android:id="@+id/cat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cat"/>
+            android:text="Cat"
+            android:textColor="@color/black" />
     </RadioGroup>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Enter NAME"/>
+            android:text="Enter NAME"
+            android:textColor="@color/black" />
+
         <EditText
             android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
             android:inputType="textAutoComplete"
+            android:textColor="@color/black"
             android:textSize="18sp" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Enter DESCRIPTION"/>
+            android:text="Enter DESCRIPTION"
+            android:textColor="@color/black" />
+
         <EditText
             android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
             android:inputType="textAutoComplete"
+            android:textColor="@color/black"
             android:textSize="18sp" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Enter PLACE"/>
+            android:text="Enter PLACE"
+            android:textColor="@color/black" />
+
         <EditText
             android:id="@+id/place"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
             android:inputType="textAutoComplete"
+            android:textColor="@color/black"
             android:textSize="18sp" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Enter PHONE NUMBER"/>
+            android:text="Enter PHONE NUMBER"
+            android:textColor="@color/black" />
+
         <EditText
             android:id="@+id/number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
             android:inputType="textAutoComplete"
+            android:textColor="@color/black"
             android:textSize="18sp" />
     </LinearLayout>
 
     <Button
-            android:id="@+id/button_save"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="SAVE" />
-<!--    <Button-->
-<!--        android:id="@+id/button_delete"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="SAVE" />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/button_read"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="DELETE" />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/button_save"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="SAVE" />-->
-<!--    <Button-->
-<!--        android:id="@+id/button_update"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="UPDATE" />-->
-<!--    <Button-->
-<!--        android:id="@+id/button_delete"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="DELETE" />-->
+        android:id="@+id/button_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="SAVE" />
 
 </LinearLayout>
