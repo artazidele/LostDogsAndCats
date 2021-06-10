@@ -84,6 +84,14 @@ class SignUpActivity : AppCompatActivity() {
                                     finish()
                                 } else {
                                     //
+                                    val dialogView = LayoutInflater.from(this).inflate(R.layout.signup, null)
+                                    val builder = AlertDialog.Builder(this)
+                                        .setView(dialogView)
+                                        .setTitle("Looks like this email is already used. Try another email.")
+                                    val alertDialog = builder.show()
+                                    dialogView.findViewById<Button>(R.id.ok_button).setOnClickListener {
+                                        alertDialog.dismiss()
+                                    }
                                 }
                             })
                 }

@@ -1,8 +1,10 @@
 package com.example.lostdogsandcats
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
@@ -25,9 +27,25 @@ class LogInActivity : AppCompatActivity() {
             when {
                 TextUtils.isEmpty(emailView.text.toString()) -> {
 
+                    val dialogView = LayoutInflater.from(this).inflate(R.layout.signup, null)
+                    val builder = AlertDialog.Builder(this)
+                        .setView(dialogView)
+                        .setTitle("You have to write an email.")
+                    val alertDialog = builder.show()
+                    dialogView.findViewById<Button>(R.id.ok_button).setOnClickListener {
+                        alertDialog.dismiss()
+                    }
                 }
                 TextUtils.isEmpty(passwordView.text.toString()) -> {
 
+                    val dialogView = LayoutInflater.from(this).inflate(R.layout.signup, null)
+                    val builder = AlertDialog.Builder(this)
+                        .setView(dialogView)
+                        .setTitle("You have to write a password.")
+                    val alertDialog = builder.show()
+                    dialogView.findViewById<Button>(R.id.ok_button).setOnClickListener {
+                        alertDialog.dismiss()
+                    }
                 }
                 else -> {
                     val email: String = emailView.text.toString()
@@ -45,6 +63,14 @@ class LogInActivity : AppCompatActivity() {
                                 startActivity(intent)
                                 finish()
                             } else {
+                                val dialogView = LayoutInflater.from(this).inflate(R.layout.signup, null)
+                                val builder = AlertDialog.Builder(this)
+                                    .setView(dialogView)
+                                    .setTitle("You have to write correct email and password.")
+                                val alertDialog = builder.show()
+                                dialogView.findViewById<Button>(R.id.ok_button).setOnClickListener {
+                                    alertDialog.dismiss()
+                                }
 
                             }
                         }
