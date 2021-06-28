@@ -1,4 +1,4 @@
-package com.example.lostdogsandcats
+package com.example.lostdogsandcats.ui.pet
 
 import android.app.AlertDialog
 import android.content.ContentValues
@@ -11,6 +11,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.lostdogsandcats.R
+import com.example.lostdogsandcats.data.Comment
+import com.example.lostdogsandcats.ui.main.MainActivity
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.FirebaseFirestore

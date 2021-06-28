@@ -1,4 +1,4 @@
-package com.example.lostdogsandcats
+package com.example.lostdogsandcats.ui
 
 import android.content.Intent
 import android.graphics.Bitmap
@@ -8,13 +8,16 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.example.lostdogsandcats.data.LostPet
+import com.example.lostdogsandcats.R
+import com.example.lostdogsandcats.ui.main.MainActivity
+import com.example.lostdogsandcats.utils.FB_PATH_ALL_PETS
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import java.io.ByteArrayOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
-
 
 class AddLostPetActivity : AppCompatActivity() {
 
@@ -59,11 +62,10 @@ class AddLostPetActivity : AppCompatActivity() {
             val place = findViewById<EditText>(R.id.place).text.toString()
             val number = findViewById<EditText>(R.id.number).text.toString()
             val userId = userid
-            var isDog = "false"
             val id = findViewById<RadioGroup>(R.id.dog_or_cat).checkedRadioButtonId
-            when (id) {
-                R.id.cat -> isDog = "false"
-                else -> isDog = "true"
+            val isDog = when (id) {
+                R.id.cat -> false
+                else -> true
             }
             val photo = userId + date + ".jpg"
             val petId = userId + date
@@ -131,11 +133,11 @@ class AddLostPetActivity : AppCompatActivity() {
     }
 
     private fun addPet(pet: LostPet, petID: String) {
-        db.collection("allpets").document(petID).set(pet)
+        db.collection(FB_PATH_ALL_PETS).document(petID).set(pet)
     }
 
     private fun deletePet(pet: String) {
-        db.collection("allpets").document("${pet}")
+        db.collection(FB_PATH_ALL_PETS).document("${pet}")
             .delete()
     }
 

@@ -1,4 +1,4 @@
-package com.example.lostdogsandcats
+package com.example.lostdogsandcats.ui.pet
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,9 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.lostdogsandcats.R
+import com.example.lostdogsandcats.ui.main.MainActivity
+import com.example.lostdogsandcats.utils.FB_PATH_ALL_PETS
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
 
@@ -49,7 +52,7 @@ class EditPetActivity : AppCompatActivity() {
             val alertDialog = builder.show()
             dialogView.findViewById<Button>(R.id.deletepet).setOnClickListener {
                 alertDialog.dismiss()
-                db.collection("allpets").document("${intent.getStringExtra("petId").toString()}")
+                db.collection(FB_PATH_ALL_PETS).document("${intent.getStringExtra("petId").toString()}")
                     .delete()
 
                 db.collection("comments")
@@ -77,7 +80,7 @@ class EditPetActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.saveEditButton).setOnClickListener {
-            db.collection("allpets").document("${intent.getStringExtra("petId").toString()}")
+            db.collection(FB_PATH_ALL_PETS).document("${intent.getStringExtra("petId").toString()}")
                 .update(
                     mapOf(
                         "name" to findViewById<EditText>(R.id.nameEditView).text.toString(),

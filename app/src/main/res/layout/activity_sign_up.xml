@@ -58,7 +58,7 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/register"
+            android:id="@+id/sign_up_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/button"
@@ -73,7 +73,7 @@
             android:textAlignment="center" />
 
         <Button
-            android:id="@+id/to_log_in"
+            android:id="@+id/log_in_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/button"
